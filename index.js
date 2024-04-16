@@ -28,21 +28,23 @@ async function apicall(postcode) {
     const response = await axios.get(
       `https://uk.api.just-eat.io/discovery/uk/restaurants/enriched/bypostcode/${postcode}`
     );
-    if(response.status === 200) {
+    if (response.status === 200) {
       const firstTenRestaurants = response.data.restaurants.slice(0, 10);
-      const firstTenRestaurantsDetails = firstTenRestaurants.map((restaurant) => {
-        const name = restaurant.name;
-        const cuisines = restaurant.cuisines
-          .map((cuisine) => cuisine.name)
-          .join();
-        const rating = restaurant.rating.starRating;
-        const address = `${restaurant.address.firstLine} ${restaurant.address.postalCode} ${restaurant.address.city}`;
-        return {name, cuisines, rating, address};
-      });
+      const firstTenRestaurantsDetails = firstTenRestaurants.map(
+        (restaurant) => {
+          const name = restaurant.name;
+          const cuisines = restaurant.cuisines
+            .map((cuisine) => cuisine.name)
+            .join(', ');
+          const rating = restaurant.rating.starRating;
+          const address = `${restaurant.address.firstLine} ${restaurant.address.postalCode} ${restaurant.address.city}`;
+          return { name, cuisines, rating, address };
+        }
+      );
 
       console.table(firstTenRestaurantsDetails);
     } else {
-      console.log(`No restaurants found for the postcode ${postcode}`)
+      console.log(`No restaurants found for the postcode ${postcode}`);
     }
   } catch (error) {
     console.log(`Something went wrong: ${error.message}`);
@@ -50,11 +52,11 @@ async function apicall(postcode) {
 }
 
 const userInput = await select({
-  message: "Please select a postcode",
-  choices: postcodes.map(code => {
-    return {value: code}
+  message: 'Please select a postcode',
+  choices: postcodes.map((code) => {
+    return { value: code };
   }),
-  loop: false
-})
+  loop: false,
+});
 
-apicall(userInput)
+apicall(userInput);
