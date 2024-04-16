@@ -20,7 +20,7 @@ npm install
 
 Run the project
 ```
-npm run start
+node index.js
 ```
 
 3. **Unclear points**:
