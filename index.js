@@ -8,7 +8,7 @@ async function apicall() {
     const firstTenRestaurants = response.data.restaurants.slice(0, 10);
     const firstTenRestaurantsDetails = firstTenRestaurants.map((restaurant) => {
       const name = restaurant.name;
-      const cuisines = restaurant.cuisines.map((cuisine) => cuisine.name);
+      const cuisines = restaurant.cuisines.map((cuisine) => cuisine.name).join();
       const rating = restaurant.rating.starRating;
       const address = `${restaurant.address.firstLine} ${restaurant.address.postalCode} ${restaurant.address.city}`;
       return { name, cuisines, rating, address };
