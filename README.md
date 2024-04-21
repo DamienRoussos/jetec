@@ -5,33 +5,33 @@
 ```
 git clone https://github.com/DamienRoussos/jetec
 ```
-
-2. **Running**: (Requires Node.js installed)
-   Node.js version used is 20.12.2
-   Install via the official website
-
-```
-https://nodejs.org/en/download
-```
-
-or using brew by running
-
-```
-brew install node@20
-```
-
 Change directory by running
 
 ```
 cd jetec
 ```
 
+2. **Install Node.js**: (Requires Node.js installed)  
+Node.js version used is 20.12.2  
+Install via the official website
+
+```
+https://nodejs.org/en/download
+```  
+*or using brew by running*
+
+```
+brew install node@20
+```
+
+3. **Install project dependencies**  
 Install dependencies by running
 
 ```
 npm install
 ```
 
+4. **Running the project**  
 Run the project by running
 
 ```
